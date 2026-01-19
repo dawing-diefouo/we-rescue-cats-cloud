@@ -1,0 +1,39 @@
+<div class="cats-page">
+    <div class="page-header">
+        <h1>Find Your Perfect Companion</h1>
+        <p>Browse through all available cats looking for their forever homes</p>
+    </div>
+
+    <div class="search-section">
+        <app-cat-search (filtersChanged)="onFiltersChanged($event)"></app-cat-search>
+    </div>
+
+    <div class="results-info" *ngIf="!loading">
+        <p>Showing {{pagedCats.length}} of {{totalCats}} cats</p>
+    </div>
+
+    <div class="loading-container" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+        <p>Loading cats...</p>
+    </div>
+
+    <div class="cats-grid" *ngIf="!loading">
+        <app-cat-card *ngFor="let item of pagedCats" [cat]="item">
+        </app-cat-card>
+    </div>
+
+    <div class="no-results" *ngIf="!loading && filteredCats.length === 0">
+        <mat-icon>search_off</mat-icon>
+        <h3>No cats found</h3>
+        <p>Try adjusting your search filters or check back later for new arrivals.</p>
+        <button mat-raised-button class="clear-btn" (click)="clearFilters()">
+            Clear All Filters
+        </button>
+    </div>
+
+    <div class="pagination-container" *ngIf="!loading && totalCats > pageSize">
+        <mat-paginator [length]="totalCats" [pageSize]="pageSize" [pageIndex]="pageIndex"
+            [pageSizeOptions]="[6, 12, 24, 48]" (page)="onPageChange($event)" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>
