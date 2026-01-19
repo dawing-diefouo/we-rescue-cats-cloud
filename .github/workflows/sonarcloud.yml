@@ -1,0 +1,34 @@
+name: SonarCloud
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sonarcloud:
+    name: SonarCloud Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: '21'  # oder die Version, die dein Backend benötigt
+
+      - name: Build with Maven
+        run: mvn clean install  # oder der Build-Befehl für dein Backend
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v1
+        with:
+          args: >
+            -Dsonar.projectKey=dein_sonarcloud_projekt
+            -Dsonar.organization=dein_organisation
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
