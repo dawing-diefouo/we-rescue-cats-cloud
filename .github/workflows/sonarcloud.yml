@@ -19,14 +19,16 @@ jobs:
       - name: Setup JDK
         uses: actions/setup-java@v1
         with:
-          java-version: '21'  # oder die Version, die dein Backend benötigt
+          java-version: '21'
 
-      - name: Build with Maven
-        run: mvn clean install  # oder der Build-Befehl für dein Backend
+      - name: Build with Maven (backend)
+        working-directory: backend
+        run: mvn -B clean install
 
-      - name: SonarCloud Scan
+      - name: SonarCloud Scan (backend)
         uses: sonarsource/sonarcloud-github-action@4006f663ecaf1f8093e8e4abb9227f6041f52216
         with:
+          projectBaseDir: backend
           args: >
             -Dsonar.projectKey=dein_sonarcloud_projekt
             -Dsonar.organization=dein_organisation
