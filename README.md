@@ -281,3 +281,4 @@ Run frontend tests:
 cd frontend
 ng test
 ```
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dawing-diefouo_we-rescue-cats-cloud&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=dawing-diefouo_we-rescue-cats-cloud)
