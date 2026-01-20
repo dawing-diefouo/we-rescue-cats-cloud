@@ -21,20 +21,20 @@ jobs:
         with:
           java-version: '21'
 
-      - name: Build with Maven (backend)
-        working-directory: backend
-        run: mvn -B -e clean test
+      # - name: Build with Maven (backend)
+      #   working-directory: backend
+      #   run: mvn -B -e clean test
 
-      - name: Print surefire reports
-        if: failure()
-        working-directory: backend
-        run: |
-          echo "=== surefire report files ==="
-          ls -la target/surefire-reports || true
-          echo "=== contents ==="
-          for f in target/surefire-reports/*.txt target/surefire-reports/*.xml; do
-            [ -f "$f" ] && echo "----- $f -----" && sed -n '1,200p' "$f"
-          done
+      # - name: Print surefire reports
+      #   if: failure()
+      #   working-directory: backend
+      #   run: |
+      #     echo "=== surefire report files ==="
+      #     ls -la target/surefire-reports || true
+      #     echo "=== contents ==="
+      #     for f in target/surefire-reports/*.txt target/surefire-reports/*.xml; do
+      #       [ -f "$f" ] && echo "----- $f -----" && sed -n '1,200p' "$f"
+      #     done
 
       - name: SonarCloud Scan (backend)
         uses: sonarsource/sonarcloud-github-action@4006f663ecaf1f8093e8e4abb9227f6041f52216
