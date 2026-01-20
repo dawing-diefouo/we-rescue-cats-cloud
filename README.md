@@ -1,3 +1,6 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dawing-diefouo_we-rescue-cats-cloud&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=dawing-diefouo_we-rescue-cats-cloud)
+
+
 # We Rescue Cats 🐱🐾
 
 A comprehensive web portal for cat rescue organizations to manage cat breeds information, adoptable cats, and the adoption process.
@@ -281,4 +284,3 @@ Run frontend tests:
 cd frontend
 ng test
 ```
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dawing-diefouo_we-rescue-cats-cloud&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=dawing-diefouo_we-rescue-cats-cloud)
